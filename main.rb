@@ -40,7 +40,7 @@ erb :what_to_do
 end
 
 get '/go_on_then' do # if user doesn't procrastinate
-
+@activity = User.find_by(id: session[:user_id]).activity
 erb :go_on_then
 end
 
@@ -74,6 +74,7 @@ get '/q1/question' do
   user = User.find_by(id: session[:user_id])
   question = Question.first
   guess = user.guess1
+  @activity = User.find_by(id: session[:user_id]).activity
 
    if question.answer == guess
 
@@ -87,6 +88,10 @@ get '/q1/question' do
 
   erb :a1
 
+end
+
+get '/no_worries' do
+  erb :no_worries
 end
 
 get '/who_are_you' do
@@ -104,7 +109,10 @@ post '/save_name' do #saves activity, creates session
 
 end
 
+
 get '/results' do
+  @guess = User.find_by(id: session[:user_id]).guess1
+  @name = User.find_by(id: session[:user_id]).name
   all_users = User.all.length
   right_users = User.where(guess1: 'blue').length
   @percentage = right_users * 100 / all_users
