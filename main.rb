@@ -5,6 +5,8 @@ require 'pg'
 
 require_relative 'db_config'
 require_relative 'models/user'
+require_relative 'models/question'
+
 
 enable :sessions 
 
@@ -32,58 +34,80 @@ end
 
 
 get '/do_you_feel' do # pointless page 
-
+@activity = User.find_by(id: session[:user_id]).activity
 erb :what_to_do
 
 end
 
-get '/go_on_then' do # if user doesnt procrastinate
+get '/go_on_then' do # if user doesn't procrastinate
 
 erb :go_on_then
 end
 
-get '/congrats' do 
+get '/congrats' do # user is accepted to procrastinate
   erb :congrats
 end
 
-get '/q1' do
-# if !params[:guess].nil? && !params[:guess].empty?
-  # @guess = params[:quess]
-  # user = User.find_by(id: session[:user_id])
-  # user.answer1 = params[:guess]
-  # user.save
+get '/q1' do # displays the question, gets user answer
 
- #  if @guess == "2"
- #    @answer = "That's correct. Though it's kind of sad that you know it."
- #  else
- #    @answer = "Nope, just 0,1 calories. No point of hoping for a slim shape here."
- #  end
+@question = Question.first.question
 
- # else
- #  @answer = []
   erb :q1
 end
-# end
 
-post '/q1' do
 
+post '/q1/question' do # saves user answer
+
+  guess = params[:guess]
   user = User.find_by(id: session[:user_id])
-  user.answer1 = params[:guess]
+  question = Question.find_by(id: 1)
+  user.guess1 = guess
+  user.question_id = question.id
   user.save
 
-  redirect to '/a1'
+  redirect to '/q1/question'
+
 end
 
-get '/a1' do
+get '/q1/question' do
+
+  user = User.find_by(id: session[:user_id])
+  question = Question.first
+  guess = user.guess1
+
+   if question.answer == guess
+
+    @answer = "happy"
+
+  else 
+
+    @answer = "sad, right answer is #{question.answer}"
+
+  end
 
   erb :a1
+
 end
 
 get '/who_are_you' do
   erb :who_are_you
 end
 
+post '/save_name' do #saves activity, creates session
+
+  name = params[:name]
+  user = User.find_by(id: session[:user_id])
+  user.name = name
+  user.save
+
+  redirect to '/results'
+
+end
+
 get '/results' do
+  all_users = User.all.length
+  right_users = User.where(guess1: 'blue').length
+  @percentage = right_users * 100 / all_users
   erb :results
 end
 

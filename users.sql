@@ -2,7 +2,9 @@ CREATE TABLE users
 (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(100), 
-  activity VARCHAR(500)
+  activity VARCHAR(500),
+  question_id INTEGER,
+  guess1 VARCHAR(500)
 
 );
 
@@ -13,19 +15,19 @@ CREATE TABLE questions
   answer VARCHAR(500)
 );
 
-CREATE TABLE results
-(
-user_id INTEGER,
-question_id INTEGER,
-result VARCHAR(100)
-);
+-- CREATE TABLE results
+-- (
+-- user_id INTEGER,
+-- question_id INTEGER,
+-- guess VARCHAR(100)
+-- );
 
 
-INSERT INTO users (name, activity) VALUES ('Jane', 'writing an essay');
+INSERT INTO users (name, activity, guess1) VALUES ('Jane', 'writing an essay', 'blue');
 
-INSERT INTO users (name, activity) VALUES ('John', 'going to the shop');
+INSERT INTO users (name, activity, guess1) VALUES ('John', 'going to the shop', 'yellow');
 
-INSERT INTO users (name, activity) VALUES ('Mary', 'cleaning');
+INSERT INTO users (name, activity, guess1) VALUES ('Mary', 'cleaning', 'purple');
 
 INSERT INTO questions (question, answer) VALUES ('what color is the sky', 'blue');
 
