@@ -2,7 +2,6 @@ require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'time_diff'
-# require 'unirest'
 require 'HTTParty'
 require 'json'
 require 'pg'
@@ -53,25 +52,8 @@ get '/congrats' do # user is accepted to procrastinate
   erb :congrats
 end
 
-# get '/trivia' do
-  
 
-  
-# response = Unirest.get "https://numbersapi.p.mashape.com/random/trivia?fragment=true&json=true&max=20&min=10",
-#   headers:{
-#     "X-Mashape-Key" => "GFsl0tYV1dmshuNtA1eZW5F2w2vCp1dYVtQjsnLqVXhUnSqBfA",
-#     "Accept" => "text/plain"
-#   }
-
-#   = params[:number]
-#   @trivia = response.body['text'].to_json
-
-  
-#  erb :trivia
-
-# end
-
-get '/trivia' do
+get '/trivia' do # random number from api
   if !params[:number].nil? && !params[:number].empty? 
     @trivia = HTTParty.get("http://numbersapi.com/#{params[:number]}")
   else 
@@ -83,7 +65,7 @@ end
 
 get '/q1' do # displays the question, gets user answer
 
-  @question = Question.first.question
+  @question = Question.all
 
   erb :q1
 end
@@ -132,13 +114,21 @@ post '/write_novel/save' do
   user = User.find_by(id: session[:user_id])
   user.characters = characters.length
   user.save
-   redirect to '/who_are_you'
+  redirect to '/doctor'
 end
+
+get '/doctor' do
+ $doctor_start_time = Time.now
+
+  erb :doctor
+end
+
 get '/no_worries' do
   erb :no_worries
 end
 
 get '/who_are_you' do
+  $doctor_end_time = Time.now
   erb :who_are_you
 end
 
@@ -153,14 +143,8 @@ post '/save_name' do #saves activity, creates session
 redirect to '/results'
 end
 
-get '/video' do
-  erb :video
-end
 
-get '/doctor' do
 
-  erb :doctor
-end
 
 
 get '/results' do
@@ -170,7 +154,7 @@ get '/results' do
   @name = user.name
   @characters = user.characters
   @nth_procrastinator = User.all.length
-  @activity = userasd.activity
+  @activity = user.activity
 
 
   all_users = User.all.length
@@ -178,6 +162,8 @@ get '/results' do
   @percentage = users_agreed * 100 / all_users
   sessiontime = Time.diff($start_time, end_time, '%m minutes and %s seconds')
   @duration = sessiontime[:diff]
+  doctor_sessiontime = Time.diff($doctor_start_time, $doctor_end_time, '%m minutes and %s seconds')
+  @doctor_duration = doctor_sessiontime[:diff]
   erb :results
 end
 

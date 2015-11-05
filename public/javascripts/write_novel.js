@@ -1,3 +1,5 @@
+
+
 overrideText = 'Ingel sometimes does not let me to open the window during the night. This makes me depressed.';
   
   appendChar = function(text) {

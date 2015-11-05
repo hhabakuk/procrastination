@@ -1,6 +1,14 @@
+
+
+<% @question.each do |x|%>
 <form action="/q1/question" method="post">
-  <label for=""><%= @question %></label>
-  <input type="text"name="guess">
+  <label for=""><%= x.question %></label><br>
+  <input type="text"name="guess"><br>
+  <label for=""><% x.answer %></label><br>
+  
 </form>
 
+
+  
+<%end%>
 

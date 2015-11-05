@@ -1,3 +1,11 @@
 <h1>Procrastination report</h1>
 <h2>Thank you for procrastinating, <%= @name %></h2>
-<p>You should have been <%= @activity %> but instead you came here. You are the <%= @nth_procrastinator%>th procrastinator today. You thought that the sky is <%= @guess%>, <%= @percentage%>% of procrastinators felt the same way. You wrote <%= @characters %> characters of award-winning novel. You spent <%= @duration %> procrastinating. I'd say time well spent.</p>
+<p>You should have been <%= @activity %> but instead you came here. You are the <%= @nth_procrastinator%>th procrastinator today. You thought that the sky is <%= @guess%>, <%= @percentage%>% of procrastinators felt the same way. Also, you had a healing session with the doctor for <%= @doctor_duration %>. You wrote <%= @characters %> characters of award-winning novel. You spent <%= @duration %> procrastinating. I'd say time well spent.</p>
+
+<script type="text/javascript">
+  $.get("http://ipinfo.io", function(response) {
+    console.log(response.country);
+}, "jsonp");
+</script> 
+
+<!-- might want to show the location -->
