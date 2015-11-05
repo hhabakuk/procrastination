@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'sinatra/reloader'
 require 'time_diff'
 require 'HTTParty'
 require 'json'
