@@ -16,9 +16,13 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     builder (3.2.2)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     json (1.8.3)
     minitest (5.8.2)
+    multi_xml (0.5.5)
     pg (0.18.3)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -40,6 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  httparty
   json
   pg
   sinatra
