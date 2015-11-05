@@ -3,16 +3,7 @@ CREATE TABLE users
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(100), 
   activity VARCHAR(500),
-  question_id INTEGER,
-  guess1 VARCHAR(500),
   characters VARCHAR(500)
-
-);
-
-CREATE TABLE disagreements
-(
-  id SERIAL4 PRIMARY KEY,
-  arguement VARCHAR(500)
 
 );
 
@@ -20,8 +11,13 @@ CREATE TABLE questions
 (
   id SERIAL4 PRIMARY KEY,
   question VARCHAR(500),
-  answer VARCHAR(500)
+  answer VARCHAR(500),
+  user_id INTEGER,
+  guess VARCHAR(500)
 );
+
+
+
 
 -- CREATE TABLE results
 -- (
@@ -31,11 +27,11 @@ CREATE TABLE questions
 -- );
 
 
-INSERT INTO users (name, activity, guess1) VALUES ('Jane', 'writing an essay', 'blue');
+INSERT INTO users (name, activity) VALUES ('Jane', 'writing an essay');
 
-INSERT INTO users (name, activity, guess1) VALUES ('John', 'going to the shop', 'yellow');
+INSERT INTO users (name, activity) VALUES ('John', 'going to the shop');
 
-INSERT INTO users (name, activity, guess1) VALUES ('Mary', 'cleaning', 'purple');
+INSERT INTO users (name, activity) VALUES ('Mary', 'cleaning');
 
 INSERT INTO questions (question, answer) VALUES ('What is the beginning of eternity, the end of time and space. The beginning of every end and the end of every place.', 'e');
 

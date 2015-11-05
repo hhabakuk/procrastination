@@ -3,11 +3,12 @@ require 'time_diff'
 require 'httparty'
 require 'json'
 require 'pg'
+require 'pry'
 
 require_relative 'db_config'
 require_relative 'models/user'
 require_relative 'models/question'
-require_relative 'models/disagreement'
+
 
 
 enable :sessions 
@@ -61,45 +62,48 @@ get '/trivia' do # random number from api
 end
 
 
-get '/q1' do # displays the question, gets user answer
 
-  @question = Question.all
+post '/quiz/save_answer' do # saves user answer
+
+  # @question.each do |x|
+  #   if !params[:guess].nil? && params[:guess] == x.answer
+  #     @result = "You're correct"
+  #   elsif !params[:guess].nil? && params[:guess] != x.answer
+  #     @result = "Nope"
+  #   else
+  #     @result =" "
+  #   end
+  # end
+
+  # guess = params[:guess]
+  # user = User.find_by(id: session[:user_id])
+  # question = Question.find_by(id: 1)
+  # user.guess1 = guess
+  # user.question_id = question.id
+  # user.save
+
+  redirect to '/quiz'
+
+end
+
+get '/quiz' do
+
+  # user = User.find_by(id: session[:user_id])
+  # question = Question.first
+  # guess = user.guess1
+  # @activity = User.find_by(id: session[:user_id]).activity
+
+  #  if question.answer == guess
+
+  #   @answer = "happy"
+
+  # else 
+
+  #   @answer = "sad, right answer is #{question.answer}"
+
+  # end
 
   erb :q1
-end
-
-
-post '/q1/question' do # saves user answer
-
-  guess = params[:guess]
-  user = User.find_by(id: session[:user_id])
-  question = Question.find_by(id: 1)
-  user.guess1 = guess
-  user.question_id = question.id
-  user.save
-
-  redirect to '/q1/question'
-
-end
-
-get '/q1/question' do
-
-  user = User.find_by(id: session[:user_id])
-  question = Question.first
-  guess = user.guess1
-  @activity = User.find_by(id: session[:user_id]).activity
-
-   if question.answer == guess
-
-    @answer = "happy"
-
-  else 
-
-    @answer = "sad, right answer is #{question.answer}"
-
-  end
-
-  erb :a1
 
 end
 
@@ -148,16 +152,16 @@ end
 get '/results' do
   end_time = Time.now
   user = User.find_by(id: session[:user_id])
-  @guess = user.guess1
+  # @guess = user.guess1
   @name = user.name
   @characters = user.characters
   @nth_procrastinator = User.all.length
   @activity = user.activity
 
 
-  all_users = User.all.length
-  users_agreed = User.where(guess1: @guess).length - 1
-  @percentage = users_agreed * 100 / all_users
+  # all_users = User.all.length
+  # users_agreed = User.where(guess1: @guess).length - 1
+  # @percentage = users_agreed * 100 / all_users
   sessiontime = Time.diff($start_time, end_time, '%m minutes and %s seconds')
   @duration = sessiontime[:diff]
   doctor_sessiontime = Time.diff($doctor_start_time, $doctor_end_time, '%m minutes and %s seconds')
