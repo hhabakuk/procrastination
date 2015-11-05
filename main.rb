@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'time_diff'
-require 'HTTParty'
+require 'httparty'
 require 'json'
 require 'pg'
 
