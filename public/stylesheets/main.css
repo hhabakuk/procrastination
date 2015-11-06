@@ -1,0 +1,139 @@
+body {
+
+  font-family: helvetica;
+  margin: auto;
+  width: 40%;
+
+}
+
+form {
+  padding-top: 20px;
+}
+
+p {
+  font-size: 40px;
+}
+
+input {
+  margin-top: 20px;
+   height:50px;
+   width: 400px;
+   border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid black;
+    width: 400px;
+   font-size:40px;
+}
+
+input:focus { 
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #9c9c9c;
+}
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #FFA8A8;
+
+}
+
+a:hover {
+  color: #57BCD9;
+}
+
+textarea { 
+  width: 400px;
+  height: 300px; }
+
+button {
+  -moz-box-shadow:inset -50px -50px 0px 50px #ffffff;
+  -webkit-box-shadow:inset -50px -50px 0px 50px #ffffff;
+  box-shadow:inset -50px -50px 0px 50px #ffffff;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #ffffff) );
+  background:-moz-linear-gradient( center top, #ededed 5%, #ffffff 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+  background-color:#ededed;
+
+  border:5px solid #dcdcdc;
+  display:inline-block;
+  color:#777777;
+  font-family:Helvetica;
+  font-size:25px;
+  font-weight:bold;
+  font-style:normal;
+  height:62px;
+  line-height:62px;
+  width:151px;
+  text-decoration:none;
+  text-align:center;
+  margin-top: 15px;
+}
+button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #ededed) );
+  background:-moz-linear-gradient( center top, #ffffff 5%, #ededed 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+  background-color:#ffffff;
+}
+
+button:active {
+  position:relative;
+  top:1px;
+}
+
+form {
+
+  display: inline-block;
+  margin: 5px;
+}
+#long-text {
+  width: 500px;
+  text-align: left;
+  text-indent: 5px;
+}
+
+#trivia {
+  width: 100px;
+    
+}
+
+#write-me {
+  width: 150px;
+}
+
+#button-doctor {
+  width: 200px;
+  text-align: left;
+  text-indent: 5px;
+}
+
+#doctor-area {
+  font-size: 13px;
+}
+
+#go-on {
+  font-size: 15px;
+  width: 500px;
+  text-align: left;
+  text-indent: 10px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+textarea {
+  font-size: 20px;
+}
+
+

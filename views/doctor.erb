@@ -1,8 +1,6 @@
 <script src='/javascripts/elizabot.js'></script>
 <script src='/javascripts/elizadata.js'></script>
 
-<h1>Moody Bitch</h1>
-
 <SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
 <!--
 $(window).load(function(){
@@ -30,7 +28,7 @@ function elizaStep() {
     return;
   }
   else if (userinput != '') {
-    var usr = 'YOU:   ' + userinput;
+    var usr = 'YOU: ' + userinput;
     var rpl ='DOCTOR: ' + eliza.transform(userinput);
     elizaLines.push(usr);
     elizaLines.push(rpl);
@@ -60,21 +58,22 @@ function elizaStep() {
 </SCRIPT>
 
 
-<container TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" BOTTOMMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0" STYLE="border:0" ><A NAME="top"></A>
+
 
 <CENTER>
+<form action="/who_are_you" method="get">
+  <button>Move on</button>
+</form>
 <P>&nbsp;</P>
-<H3>Eliza</H3>
 <TABLE BORDER="0" CELLSPACING="10" CELLPADDING="0">
 <FORM NAME="e_form" onsubmit="elizaStep();return false">
-<TR><TD COLSPAN="2"><TEXTAREA NAME="e_display" COLS="60" ROWS="20"></TEXTAREA></TD></TR>
+<TR><TD COLSPAN="2"><TEXTAREA id="doctor-area" NAME="e_display" COLS="60" ROWS="20"></TEXTAREA></TD></TR>
 <TR VALIGN="middle">
   <TD><INPUT TYPE="text" NAME="e_input" SIZE="50"></TD>
-  <TD ALIGN="right"><INPUT TYPE="submit" VALUE="&nbsp;Talk&nbsp;"> <INPUT TYPE="reset" VALUE="Reset" onClick="window.setTimeout('elizaReset()',100)"></TD>
+  <TD ALIGN="right"><INPUT type="hidden"  VALUE="&nbsp;Talk&nbsp;"> <INPUT type="hidden" VALUE="Reset" onClick="window.setTimeout('elizaReset()',100)"></TD>
 </TR>
 </FORM>
-</container>
 
-<form action="/who_are_you" method="get">
-  <button>Leave now</button>
-</form>
+
+
+

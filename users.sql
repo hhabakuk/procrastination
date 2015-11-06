@@ -3,7 +3,10 @@ CREATE TABLE users
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(100), 
   activity VARCHAR(500),
-  characters VARCHAR(500)
+  characters VARCHAR(500),
+  answer1 VARCHAR(500),
+  answer2 VARCHAR(500),
+  answer3 VARCHAR(500)
 
 );
 

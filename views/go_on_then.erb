@@ -1,3 +1,9 @@
 <h1>Sorry, this page is for procrastinators exclusevly. Go on and start <%= @activity %>.</h1>
 
-<a href="http://lmgtfy.com/?q=procrastination+">What is procrastination?</a>
+<h4>If you're unfamiliar with the concept of procrastination, see the video below</h4>
+
+<iframe src="https://player.vimeo.com/video/9553205?portrait=0&badge=0" width="500" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+
+<form action="/congrats" method="get">
+  <button id="go-on">Oh, now I get it. I actually don't feel like <%= @activity %> </button>
+</form>

@@ -3,11 +3,11 @@ require 'time_diff'
 require 'httparty'
 require 'json'
 require 'pg'
-require 'pry'
+
 
 require_relative 'db_config'
 require_relative 'models/user'
-require_relative 'models/question'
+
 
 
 
@@ -55,6 +55,7 @@ end
 get '/trivia' do # random number from api
   if !params[:number].nil? && !params[:number].empty? 
     @trivia = HTTParty.get("http://numbersapi.com/#{params[:number]}")
+
   else 
     @trivia = ' '
   end
@@ -62,53 +63,66 @@ get '/trivia' do # random number from api
 end
 
 
-
-post '/quiz/save_answer' do # saves user answer
-
-  # @question.each do |x|
-  #   if !params[:guess].nil? && params[:guess] == x.answer
-  #     @result = "You're correct"
-  #   elsif !params[:guess].nil? && params[:guess] != x.answer
-  #     @result = "Nope"
-  #   else
-  #     @result =" "
-  #   end
-  # end
-
-  # guess = params[:guess]
-  # user = User.find_by(id: session[:user_id])
-  # question = Question.find_by(id: 1)
-  # user.guess1 = guess
-  # user.question_id = question.id
-  # user.save
-
-  redirect to '/quiz'
-
+get '/question1' do # displays the question, gets user answer
+  erb :question1
 end
 
-get '/quiz' do
-
-  # user = User.find_by(id: session[:user_id])
-  # question = Question.first
-  # guess = user.guess1
-  # @activity = User.find_by(id: session[:user_id]).activity
-
-  #  if question.answer == guess
-
-  #   @answer = "happy"
-
-  # else 
-
-  #   @answer = "sad, right answer is #{question.answer}"
-
-  # end
-
-  erb :q1
-
+get '/question1_no' do
+  @text = "Yeah, I haven't either"
+  user = User.find_by(id: session[:user_id])
+  user.answer1 = "no"
+  user.save
+  erb :answer1question2
 end
 
-get '/write_novel' do
-  erb :write_novel
+get '/question1_yes' do
+  @text = "Yeah, me too"
+  user = User.find_by(id: session[:user_id])
+  user.answer1 = "yes"
+  user.save
+  erb :answer1question2
+end
+
+get '/question2' do # displays the question, gets user answer
+  erb :question2
+end
+
+get '/question2_no' do
+  @text = "OMG, I haven't either."
+  user = User.find_by(id: session[:user_id])
+  user.answer2 = "no"
+  user.save
+  erb :answer2question3
+end
+
+get '/question2_yes' do
+  @text = "OMG, me too."
+  user = User.find_by(id: session[:user_id])
+  user.answer2 = "yes"
+  user.save
+  erb :answer2question3
+end
+
+get '/question3' do # displays the question, gets user answer
+  erb :question3
+end
+
+get '/question3_no' do
+  @text = "Me neither. I'd like to, though."
+  user = User.find_by(id: session[:user_id])
+  @activity = user.activity
+  user.answer3 = "no"
+  user.save
+  erb :answer3
+end
+
+get '/question3_yes' do
+  @text = "Me too, the ice cream there is amazing, isn't it?"
+  user = User.find_by(id: session[:user_id])
+  @activity = user.activity
+  user.answer3 = "yes"
+  user.save
+  erb :answer3
 end
 
 post '/write_novel/save' do
@@ -116,7 +130,11 @@ post '/write_novel/save' do
   user = User.find_by(id: session[:user_id])
   user.characters = characters.length
   user.save
-  redirect to '/doctor'
+  redirect to '/go_to_doctor'
+end
+
+get '/go_to_doctor' do
+  erb :go_to_doctor
 end
 
 get '/doctor' do
@@ -143,35 +161,44 @@ post '/save_name' do #saves activity, creates session
 
   
 redirect to '/results'
+
 end
-
-
 
 
 
 get '/results' do
   end_time = Time.now
   user = User.find_by(id: session[:user_id])
-  # @guess = user.guess1
+  @activity = user.activity
   @name = user.name
   @characters = user.characters
   @nth_procrastinator = User.all.length
-  @activity = user.activity
-
-
-  # all_users = User.all.length
-  # users_agreed = User.where(guess1: @guess).length - 1
-  # @percentage = users_agreed * 100 / all_users
   sessiontime = Time.diff($start_time, end_time, '%m minutes and %s seconds')
   @duration = sessiontime[:diff]
   doctor_sessiontime = Time.diff($doctor_start_time, $doctor_end_time, '%m minutes and %s seconds')
   @doctor_duration = doctor_sessiontime[:diff]
+
+  if user.answer1 == "yes"
+    @a1 = "broken a bone"
+  else 
+    @a1 = "never broken a bone"
+  end
+
+  if user.answer2 == "yes"
+    @a2 = "seen the rain"
+  else 
+    @a2 = "never seen the rain"
+  end
+
+  if user.answer3 == "yes"
+    @a3 = "been to Italy"
+  else 
+    @a3 = "never been to Italy"
+  end
+
+      
   erb :results
 end
 
-get '/argue' do
-
-  :argue
-end
 
 

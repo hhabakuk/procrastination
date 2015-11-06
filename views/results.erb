@@ -1,7 +1,24 @@
-<h1>Procrastination report</h1>
-<h2>Thank you for procrastinating, <%= @name %></h2>
-<p>You should have been <%= @activity %> but instead you came here. You are the <%= @nth_procrastinator%>th procrastinator today. You thought that the sky is , % of procrastinators felt the same way. Also, you had a healing session with the doctor for <%= @doctor_duration %>. You wrote <%= @characters %> characters of award-winning novel. You spent <%= @duration %> procrastinating. I'd say time well spent.</p>
 
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h4><%= @name %>, it was nice meeting you. You were my <%= @nth_procrastinator%>th procrastinator today but the <%= @duration %> we spent procrastinating together were by far the most memorable ones I've had so far. I mean, how often do you meet someone who has also <%= @a1 %>, <%= @a2 %> <i>and</i> <%= @a3 %> ?</h4>
+
+<h4> I'm sorry about you having to spend <%= @doctor_duration %> at the doctor after I asked you to write down your thoughts on <%= @activity %> but I do feel they were the most honest <%= @characters %> characters I've ever read.</h4>
+
+<h4>It is time we said our goodbyes now, I wish you all the best with <%= @activity %>.</h4>
+
+<h5>Love,<br>
+ Helen.</h5>
+
+
+<a href="http://lmgtfy.com/?q=<%=@activity%>">How do I start with <%= @activity %>?</a>
 <script type="text/javascript">
   $.get("http://ipinfo.io", function(response) {
     console.log(response.country);

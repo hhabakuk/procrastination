@@ -1,10 +1,12 @@
-<h1>Ooh, <%= @activity %>, eh? Do you feel like <%= @activity %>?</h1>
+<h1>Ooh, <%= @activity %>, eh? <br> Do you feel like <%= @activity %>?</h1>
 
+<div id="alignButtons">
 <form action="/go_on_then" method="get">
   <button>YES</button>
 </form>
 
-<form action="/congrats" method="get">
+<form action="/congrats" id="get">
   <button>NO</button>
 </form>
+</div>
 

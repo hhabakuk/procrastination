@@ -1,10 +1,12 @@
+<h1><%= @text%></h1>
+
 
   <div class="wrapper">
-    <h1>Tell me, what is bothering you.</h1>
+<h1>Hey, tell me about <%= @activity %>, do you usually like <%= @activity %>?</h1>
+    
     <form action="/write_novel/save" method="post">
       <textarea name="characters" id="vaev"></textarea>
-      <button>Done</button>
+      <button id="write-me">That's it</button>
     </input>
     </form>
   </div>
-

@@ -1,16 +1,15 @@
+
 <form action="/trivia" method="get">
-  <label for="">Choose a number</label><br>
-  <input type="number"name="number">
+  <label for="">Type in a number and press enter</label><br>
+  <input id="trivia" type="number" name="number">
 </form>
 
 <h1>
 <%= @trivia %>
 </h1>
 
-<form action="/quiz" method="get">
-  <button>Enough of numbers, let's move on</button>
+<form  action="/question1" method="get">
+  <button id="long-text">Enough of numbers, let's move on</button>
 </form>
 
-<form action="/who_are_you" method="get">
-  <button>I want to stop procrastinating now</button>
-</form>
+

@@ -1,6 +1,6 @@
 
 
-overrideText = 'Ingel sometimes does not let me to open the window during the night. This makes me depressed.';
+overrideText = 'Seven a.m., waking up in the morning. Gotta be fresh, gotta go downstairs. Gotta have my bowl, gotta have cereal. Seein everything, the time is goin. Tickin on and on, everybodys rushin. Gotta get down to the bus stop. Gotta catch my bus, I see my friends (My friends). Kickin in the front seat. Sittin in the back seat. Gotta make my mind up. Which seat can I take?. Its Friday, Friday. Gotta get down on Friday. Everybodys lookin forward to the weekend, weekend. Friday, Friday. Gettin down on Friday. Everybodys lookin forward to the weekend';
   
   appendChar = function(text) {
     var nextChar = overrideText.slice(text.length, text.length+1);
