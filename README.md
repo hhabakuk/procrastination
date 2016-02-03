@@ -1,4 +1,4 @@
-# procrastination
+# Procrastination app
 
 
 # Overview
@@ -7,15 +7,15 @@ Procrastination app allows users to have a safe place to procrastinate. The user
 
 # Technology
 
-Ruby 
-Javascript 
-PostgreSQL
-HTML5
-CSS3
-Sinatra
-Active Record
-Numbers API
-Elizabot
+* Ruby 
+* Javascript 
+* PostgreSQL
+* HTML5
+* CSS3
+* Sinatra
+* Active Record
+* Numbers API
+* Elizabot
 
 # Key features
 
